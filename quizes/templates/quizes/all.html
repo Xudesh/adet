@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Adet - Testler
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/quizes.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <h3>Test shigariw</h3>
+    <div class="quizes">
+        {% for language in quizes_all %}
+            <a href="{% url 'test' language.subject_slug %}">{{ language.subject }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}

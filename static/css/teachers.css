@@ -1,0 +1,95 @@
+*{
+    scroll-behavior: smooth;
+}
+
+
+.teachers-container{
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 80px;
+}
+
+.headers {
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.headers h3{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 10px 15px 5px ;
+    color: black;
+}
+
+
+.teacher-menu{
+    list-style: none;
+    display: flex;
+    gap: 22px;
+    margin: 10px 0 0 ;
+    padding: 5px 15px 15px;
+}
+
+.teacher-menu__item a{
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.teacher-menu__item a:hover{
+    color: black;
+    transition: color 0.3s ease-out;
+
+}
+
+.teacher-menu .border{
+    border-right: 1px solid white;
+}
+
+.teacher-content{
+    background-color: white;
+    width: 100%;
+    padding: 20px 20px 20px;
+    margin-bottom: 320px;
+}
+
+.teacher-links{
+    display: flex;
+    flex-direction: column;
+    background-color: dodgerblue;
+}
+
+.teacher-links a{
+    color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    margin: 7px 10px;
+}
+
+.teacher-links a:first-child{
+    margin-top: 15px;
+}
+
+.teacher-links a:last-child{
+    margin-bottom: 15px;
+}
+
+.teacher-links a:hover{
+    color: rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease-out;
+}
+
+.teacher-test{
+    height: 90vh;
+    background-color: white;
+    margin: 0 auto;
+
+    width: 70%;
+}
+
+
+
+@media screen and (max-width: 420px) {
+    .teachers-container{
+        width: 90%;
+    }
+}

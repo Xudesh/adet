@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Adet - Bas bet
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    <link rel="shortcut icon" href="{% static 'assets/2.png' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'assets/2.png' %}" alt="logo">
+                    <span>Adet</span>
+                </a>
+            </div>
+
+            <ul class="header-left-menu" id="header-menu">
+                <li class="header-menu__item">
+                    <a class="header-menu-link" href="{% url 'quizes' %}">Testler</a>
+                </li>
+
+                <li class="header-menu__item">
+                    <a class="header-menu-link" href="{% url 'home' %}">Sabaqlar</a>
+                </li>
+
+            </ul>
+
+            <button class="menu-btn" id="toggle-btn" type="button">
+                <img class="toggle-menu" src="{% static 'assets/menu.svg' %}" alt="menu">
+            </button>
+        </div>
+
+        <div class="header-right">
+            
+            {% if request.user.is_authenticated %}
+                <button id="profile" class="profile" type="button">
+                    {% if user.profile.photo %}
+                        <img class="image-profile" src="{{ user.profile.photo.url }}" alt="">
+                    {% else %}
+                        <img class="image-profile" src="{% static 'assets/person.svg' %}" alt="">
+                    {% endif %}
+                    <img id="chevron-down" class="chevron-down" src="{% static 'assets/chevron-down.svg' %}" alt="">
+                </button>
+                <ul id="dropdown-menu" class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'profile' %}">Profil</a>
+                        
+                    </li>
+
+                    <li>
+                        <a href="{% url 'sign_out' %}">shigiw</a>
+                    </li>
+                </ul>
+            {% else %}
+                <button class="btn btn-register"><a href="{% url 'sign_up' %}">Registraciya</a></button>
+                <button class="btn btn-login"><a href="{% url 'sign_in' %}">Kiriw</a></button>
+            {% endif %}
+
+           
+        </div>
+
+    </header>
+
+
+    <div class="container">
+        <div class="grid-content">
+            <aside class="sidebar">
+                    <div class="categories">
+                        {% if request.user.is_authenticated %}
+
+                            {% for language in subjects %}
+                                <a href="{% url 'lessons' language.subject_slug %}">{{ language.subject }}</a>
+                                <div class="border"></div>
+                            {% endfor %}  
+
+                        {% else %}
+
+                            {% for language in languages %}    
+                                <a href="{% url 'lessons' language.subject_slug %}">{{ language.subject }}</a>
+                                <div class="border"></div>
+                            {% endfor %}  
+
+                        {% endif %}                
+                    </div>
+
+                    <div class="rating">
+                        {% include 'quizes/leaderboard.html' %}
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                        <div class="daily_visit">
+                            <p class="command">{{ consecutive_days }} kun</p>
+                        </div>
+                    {% endif %}
+            </aside>
+
+            <main class="content">
+                {% block content %}
+                    <div class="lessons-container">
+                        {% for lesson in lessons %}
+
+                            <div class="lesson-info">
+                
+                                <div class="lesson-image">
+                                    <img width="300px" src="{{ lesson.image.url }}" alt="">
+                                </div>
+                
+                                <div class="lesson-date">
+                                    <p>{{ lesson.date| date:"j-F" }}</p>
+                                </div>
+                
+                                <div class="lesson-title">
+                                    <a href="{{ lesson.get_absolute_url }}">{{lesson.name| capfirst| truncatechars:49 }}</a>
+                                </div>
+                                
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="logo">
+            <a href="{% url 'home' %}"><span>Adet</span></a>
+
+            <p>Adet - Oqiwshilardin telefon<br/> ham social tarmaqlardan<br/> paydali paydalaniwina ushin jaratilgan</p>
+        </div>
+
+        <div class="footer-menu">
+            <h3>Ssilkalar</h3>
+            <ul class="menu">
+                <li class="footer-menu__item">
+                    <a class="header-menu-link" href="{% url 'quizes' %}">Testler</a>
+                </li>
+
+                <li class="footer-menu__item">
+                    <a class="header-menu-link" href="{% url 'home' %}">Sabaqlar</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="about">
+            <h2>Biz haqqimizda</h2>
+            <ul class="menu">
+                <li class="footer-menu__item">
+                    <a class="header-menu-link" href="{% url 'teachers' %}">Pedagoglar</a>
+                </li>
+
+                <li class="footer-menu__item">
+                    <a class="header-menu-link" href="{% url 'parents' %}">Ata-Analar</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="contacts">
+            <h3>Kontakt</h3>
+
+            <p>test@gmail.com</p>
+
+            <div class="social-links">
+                <a href="#"><img src="{% static 'assets/telegram.svg' %}" width="24px" alt=""></a>
+
+                <a href="#"><img src="{% static 'assets/youtube.png' %}" width="24px" alt=""></a>
+
+                <a href="#"><img src="{% static 'assets/facebook.jpg' %}" width="24px" alt=""></a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
+

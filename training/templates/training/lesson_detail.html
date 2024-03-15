@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{ lesson.name }}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/lesson_detail.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="lesson-card">
+
+        <div class="lesson-category">
+            <a href="{% url 'home' %}"><img class="chevron" src="{% static 'assets/chevron.svg' %}" alt="artqa qaytiw">Artqa qaytiw</a>
+        </div>
+
+        <div class="lesson__name">
+            <p>{{ lesson.name }}</p>
+        </div>
+
+
+        <div class="lesson__youtube">
+            {% if lesson.video %}
+                <iframe class="youtube" width="100%" height="315px" src="{{ lesson.video }}" title="{{ lesson.name }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            {% endif %}
+        </div>
+
+        <div class="lesson__date">
+            <p>{{ lesson.date| date:'j-F' }}</p>
+        </div>
+
+        <div class="lesson__test">
+            <a href="{% url 'quizes' %}">Test shigariw</a>
+        </div>
+    </div>
+{% endblock %}

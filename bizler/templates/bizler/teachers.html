@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedagoglar</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/teachers.css' %}">
+    <link rel="shortcut icon" href="{% static 'assets/2.png' %}" type="image/x-icon">
+
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'assets/2.png' %}" alt="logo">
+                    <span>Adet</span>
+                </a>
+            </div>
+
+            <ul class="header-left-menu" id="header-menu">
+                <li class="header-menu__item">
+                    <a class="header-menu-link" href="{% url 'quizes' %}">Testler</a>
+                </li>
+
+                <li class="header-menu__item">
+                    <a class="header-menu-link" href="{% url 'home' %}">Sabaqlar</a>
+                </li>
+            </ul>
+
+            <button class="menu-btn" id="toggle-btn" type="button">
+                <img class="toggle-menu" src="{% static 'assets/menu.svg' %}" alt="menu">
+            </button>
+        </div>
+
+        <div class="header-right">
+            
+            {% if request.user.is_authenticated %}
+                <button id="profile" class="profile" type="button">
+                    {% if user.profile.photo %}
+                        <img class="image-profile" src="{{ user.profile.photo.url }}" alt="">
+                    {% else %}
+                        <img class="image-profile" src="{% static 'assets/person.svg' %}" alt="">
+                    {% endif %}
+                    <img id="chevron-down" class="chevron-down" src="{% static 'assets/chevron-down.svg' %}" alt="">
+                </button>
+                <ul id="dropdown-menu" class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'profile' %}">Profil</a>
+                        
+                    </li>
+
+                    <li>
+                        <a href="{% url 'sign_out' %}">shigiw</a>
+                    </li>
+                </ul>
+            {% else %}
+                <button class="btn btn-register"><a href="{% url 'sign_up' %}">Registraciya</a></button>
+                <button class="btn btn-login"><a href="{% url 'sign_in' %}">Kiriw</a></button>
+            {% endif %}
+
+           
+        </div>
+
+    </header>
+
+    <div class="teachers-container">
+       <div class="headers">
+            <h3>Pedagoglar ushin</h3>
+
+            <div class="teachers-header">
+                <ul class="teacher-menu">
+
+                    <li class="teacher-menu__item">
+                        <a href="{% url 'quizes' %}">Oqiwshi testi</a>
+                    </li>
+                </ul>
+            </div>
+       </div>
+
+       <div class="teacher-content">
+            <div class="teacher-links">
+                <a href="https://uz.wikipedia.org/wiki/IELTS" target="_blank">IELTS aliw ushin ne qiliw kerek?</a>
+                <a href="https://uzbmb.uz/page/cefr" target="_blank">Milliy sertificat</a>
+                <a href="https://muhaz.org/pars_docs/refs/115/114731/114731.pdf" target="_blank">Balalar menen qalay islesiw kerek?</a>
+
+            </div>
+       </div>
+    </div>
+
+</body>
+</html>

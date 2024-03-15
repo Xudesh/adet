@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Adet - Test sheshiw
+{% endblock %}
+
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/quizes.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <form class="test-form" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">tekseriw</button>
+    </form>
+{% endblock %}

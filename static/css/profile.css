@@ -1,0 +1,170 @@
+.user-profile {
+  margin-top: 25px;
+  padding: 5px 32px;
+}
+
+
+.user-profile .command {
+  margin-bottom: 30px;
+}
+
+
+.user-profile .user-profile-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+
+.profile_info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+.profile_info .image-profile {
+  width: 110px;
+  height: 90px;
+  border-radius: 5px;
+  background-size: cover;
+  margin-bottom: 6px;
+}
+
+
+.profile_info h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+
+.profile_info p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+.profile_settings {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+
+.user-profile .week {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+
+.user-profile .week p {
+  border-bottom: 1px solid black;
+  padding: 3px 5px;
+  margin-bottom: 10px;
+}
+
+
+
+
+.week p.monday{
+  color: red;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.user-profile .week p.tuesday {
+  color: red;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.user-profile .week p.wednesday {
+  color: red;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.user-profile .week p.thursday {
+  color: red;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+
+.user-profile .week p.friday {
+  color: red;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.week p.saturday{
+  color: red;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.user-profile .week p.sunday {
+  color: red;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.inline-btn{
+  display: inline-flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.inline-btn .photo{
+  display: none;
+}
+
+.image-label{
+  background-color: cornflowerblue;
+  padding: 4px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .user-profile .user-profile-name .profile_info .image-profile {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  .user-profile .user-profile-name .profile_info h1 {
+    font-size: 26px;
+  }
+  .user-profile .user-profile-name .profile_info .image-profile {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 334px) {
+  .user-profile {
+    padding: 5px 30px;
+  }
+  .user-profile .user-profile-name .profile_info h1 {
+    font-size: 24px;
+  }
+  .user-profile .user-profile-name .profile_info .image-profile {
+    width: 80px;
+    height: 80px;
+  }
+
+}

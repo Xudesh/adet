@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Adet - Test natiyjesi
+{% endblock %}
+
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/quizes.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="quize-result">
+        Siz <b style="font-size: 21px;">{{ test_result.score }}</b> duris shigardiniz
+    </div>
+{% endblock %}

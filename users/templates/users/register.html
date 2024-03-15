@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adet - Registraciya</title>
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/register.css' %}">
+        <link rel="shortcut icon" href="{% static 'assets/2.png' %}" type="image/x-icon">
+    {% endblock %}
+
+</head>
+<body>
+    <section class="forms">
+        <form class="register-form" method="post" >
+            <h3>Registraciya</h3>
+            {% csrf_token %}
+
+            <div class="inputs">
+                    
+                {{ form.username }}
+
+                {{ form.email }}
+
+                <div class="passwords">
+                    {{ form.password1 }}
+                    <div id="eye1" class="eye"></div>
+
+                </div>
+
+                <div class="passwords">
+                    {{ form.password2  }}
+                    <div id="eye2" class="eye"></div>
+
+                </div>
+                
+                {{ form.klass }}
+
+            </div>
+
+            <button class="btn register-btn" type="submit">Registraciya</button>
+    
+            <p class="login-link"><a href="{% url 'sign_in' %}">account barma?</a></p>
+    
+        </form>
+    </section>
+
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

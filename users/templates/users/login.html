@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adet - Kiriw</title>
+    <link rel="shortcut icon" href="{% static 'img/2.png' %}" type="image/x-icon">
+
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <div class="forms">
+        <form class="register-form" method="post" >
+            <h3>Login</h3>
+            {% csrf_token %}
+    
+            <div class="inputs">
+    
+                {{ form.username }}
+    
+                <div class="passwords">
+                    {{ form.password }}
+                    <div id="login-eye" class="login-eye"></div>
+                </div>
+            </div>
+    
+            <button class=" btn login-btn" type="submit">Kiriw</button>
+            <p class="login-link"><a href="{% url 'sign_up' %}">account joqpa?</a></p>
+        </form>
+    </div>
+
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

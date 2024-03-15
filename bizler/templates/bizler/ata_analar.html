@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ata-Analar</title>
+    <link rel="icon" href="{% static 'img/2.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/parents.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/2.png' %}" alt="logo">
+                    <span>Adet</span>
+                </a>
+            </div>
+
+            <ul class="header-left-menu" id="header-menu">
+                <li class="header-menu__item">
+                    <a class="header-menu-link" href="{% url 'quizes' %}">Testler</a>
+                </li>
+
+                <li class="header-menu__item">
+                    <a class="header-menu-link" href="{% url 'home' %}">Sabaqlar</a>
+                </li>
+
+            </ul>
+
+            <button class="menu-btn" id="toggle-btn" type="button">
+                <img class="toggle-menu" src="{% static 'assets/menu.svg' %}" alt="menu">
+            </button>
+        </div>
+
+        <div class="header-right">
+            
+            {% if request.user.is_authenticated %}
+                <button id="profile" class="profile" type="button">
+                    {% if user.profile.photo %}
+                        <img class="image-profile" src="{{ user.profile.photo.url }}" alt="">
+                    {% else %}
+                        <img class="image-profile" src="{% static 'assets/person.svg' %}" alt="">
+                    {% endif %}
+                    <img id="chevron-down" class="chevron-down" src="{% static 'assets/chevron-down.svg' %}" alt="">
+                </button>
+                <ul id="dropdown-menu" class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'profile' %}">Profil</a>
+                        
+                    </li>
+
+                    <li>
+                        <a href="{% url 'sign_out' %}">Shigiw</a>
+                    </li>
+                </ul>
+            {% else %}
+                <button class="btn btn-register"><a href="{% url 'sign_up' %}">Registraciya</a></button>
+                <button class="btn btn-login"><a href="{% url 'sign_in' %}">Kiriw</a></button>
+            {% endif %}
+
+           
+        </div>
+
+    </header>
+
+    <div class="parent_container">
+        <h2>Ata-Analar ushin</h2>
+        
+        <div class="parent-cards">
+            {% for parents in parents %}
+                <div class="card">
+                    <div class="card__info">
+
+                        <div class="card__info_title">
+                            <h4 class="full-title">{{ parents.title }}</h4>
+                        </div>
+
+                        <div class="card__info_title">
+                            <h4 class="title-80">{{ parents.title|truncatechars:79 }}</h4>
+                        </div>
+
+                        <div class="card__info_title">
+                            <h4 class="title-60">{{ parents.title|truncatechars:45 }}</h4>
+                        </div>
+
+                        <div class="card__info_text">
+                            <p class="full-text">{{ parents.text }}</p>
+                        </div>
+
+                        <div class="card__info_text">
+                            <p class="text-80">{{ parents.text|truncatechars:461 }}</p>
+                        </div>
+
+                        <div class="card__info_text">
+                            <p class="text-60">{{ parents.text|truncatechars:341 }}</p>
+                        </div>
+
+                        <div class="card__info_text">
+                            <p class="text-40">{{ parents.text|truncatechars:261 }}</p>
+                        </div>
+
+
+                        <div class="card__info_date">
+                            <span>{{ parents.public_date|date:"d/m/Y" }}</span>
+                        </div>
+                    </div>
+
+
+                    {% if parents.image_url %}
+                        <div class="card__image">
+                            <img src="{{ parents.image_url }}" alt="{{ parents.title }}">
+                        </div>
+                    {% else %}
+                        <div class="card__image">
+                            <img src="{{ parents.image.url }}" alt="{{ parents.title }}">
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

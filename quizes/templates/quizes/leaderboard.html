@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liderler</title>
+</head>
+<body>
+    <div class="leaderboard">
+        <h1>Liderler</h1>
+        <ol>
+            {% if leaderboard %}
+    
+                {% for result in leaderboard %}
+                    <li><span class="username">{{ result.user.username }}</span> - {{ result.score }} ball</li>
+                {% endfor %}
+    
+            {% else %}
+                <h3>Lider joq!</h3>
+            {% endif %}
+        </ol>
+    </div>
+</body>
+</html>

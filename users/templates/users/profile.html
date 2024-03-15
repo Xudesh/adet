@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Alem - Onlayn mektep
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="user-profile">
+        
+        <div class="user-profile-name">
+            <div class="profile_info">
+
+                <h1>{{ user.username }}</h1>
+
+                {% if request.user.profile.photo %}
+                    <img class="image-profile" src="{{ user.profile.photo.url }}" alt="">
+                {% else %}
+                    <img src="{% static 'assets/personsvg' %}" alt="">
+                {% endif %}
+                <p>{{ user.date_joined| date:'j-F' }}</p>    
+            </div>
+            <div class="profile_settings">
+                <p><a href="{% url 'edit' %}">Ozgertiw</a></p>
+
+                <a href="{% url 'sign_out' %}">Shigiw</a>
+            </div>
+        </div>
+
+
+        <p class="command">Siz saytga {{ consecutive_days }} kun qatara kirdiniz</p>
+
+        <div class="week">
+            
+            <p class="{% if current_weekday == 0 %}monday {% endif %}">Du'ysembi</p>
+            
+
+            <p class="{% if current_weekday == 1 %}tuesday{% endif %}">Shiyshembi</p>
+            
+
+            <p class="{% if current_weekday == 2 %}wednesday{% endif %}">Sa'rshembi</p>
+            
+
+            <p class=" {% if current_weekday == 3 %}thursday{% endif %}">Piyshembi</p>
+            
+
+            <p class="{% if current_weekday == 4 %}friday{% endif %}">Juma</p>
+            
+
+            <p class="{% if current_weekday == 5 %}saturday{% endif %}">Shembi</p>
+            
+
+            <p class="{% if current_weekday == 6 %}sunday{% endif %}">Yekshembi</p>
+            
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accaunt nastroykasi</title>
+
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <section class="forms">
+        <form class="register-form" method="post" enctype="multipart/form-data" >
+            <h3>Accaunt nastroykasi</h3>
+            {% csrf_token %}
+
+            <div class="inputs">
+                    
+                {{ user_form.username }}
+
+                {{ user_form.email }}
+
+                <div class="inline-btn">
+                    {{ profile_form.photo }}
+
+                    <label class="image-label" for="id_photo">
+                        S'uret tanlan
+                    </label>
+                
+                    {{ profile_form.klass }}
+                </div>
+
+            </div>
+
+            <button class="btn edit-btn" type="submit">Ozgertiw</button>
+
+    
+        </form>
+    </section>
+</body>
+</html>

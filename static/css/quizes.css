@@ -1,0 +1,28 @@
+.quizes {
+  padding: 30px 32px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+h3 {
+  padding: 30px 32px 0;
+}
+
+.test-form {
+  padding: 30px 32px;
+}
+
+
+.test-form button {
+  margin-top: 20px;
+  padding: 4px 6px;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  box-shadow: 1.2px 1px 1.01px rgba(0, 0, 0, 0.3);
+}
+
+.quize-result{
+  padding: 30px 32px;
+}

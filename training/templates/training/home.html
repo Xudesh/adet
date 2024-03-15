@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Home 
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for language in subjects %}
+            <li>{{ language.subject }}</li>
+        {% empty %}
+            <li>No subjects  for this class</li>
+        {% endfor %}
+    </ul>    
+{% endblock %}
