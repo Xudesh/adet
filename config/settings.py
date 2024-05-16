@@ -292,6 +292,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ BASE_DIR / 'static/']
 
+
+SESSION_COOKIE_SECURE = True  
+CSRF_COOKIE_SECURE = True
   
 
 MEDIA_URL = 'media/'
