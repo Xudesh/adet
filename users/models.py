@@ -10,7 +10,7 @@ class Profile(models.Model):
         validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])], 
         blank=True, 
         null=True)
-    klass = models.IntegerField(null=True, blank=True, choices=[(i, i) for i in range(1, 12)])
+    klass = models.PositiveIntegerField(null=True, blank=True, choices=[(i, i) for i in range(1, 12)])
 
     def __str__(self) -> str:
         return f'{self.user.username} - {self.klass} klass'

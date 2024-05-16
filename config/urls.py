@@ -5,11 +5,13 @@ from django.conf.urls.static import static
 from training.views import *
 
 urlpatterns = [
+    path('ckeditor5/', include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
     path('admin/', admin.site.urls),
     path('', include('training.urls')),
     path('users/', include('users.urls')),
     path('quizes/', include('quizes.urls')),
-    path('bizler/', include('bizler.urls'))
+    path('bizler/', include('bizler.urls')),
+
 
 ] 
 

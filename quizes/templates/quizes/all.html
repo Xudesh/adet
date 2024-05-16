@@ -16,5 +16,10 @@
         {% for language in quizes_all %}
             <a href="{% url 'test' language.subject_slug %}">{{ language.subject }}</a>
         {% endfor %}
+
+        {% for lesson in lesson_quizes %}
+            <a href="{% url 'pass_test' lesson.pk %}">{{ lesson.name }}</a>
+        {% endfor %}
+
     </div>
 {% endblock %}

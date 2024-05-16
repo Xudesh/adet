@@ -5,6 +5,7 @@ from training.models import *
 class Question(models.Model):
     text = models.TextField(null=True)
     language = models.ForeignKey(to=Language, on_delete=models.CASCADE, null=True, blank=True)
+    lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.text}'
@@ -30,6 +31,7 @@ class TestResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     test_date = models.DateField(auto_now_add=True)
     score = models.IntegerField(blank=True, null=True)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name="Урок", null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.user} - {self.score}'

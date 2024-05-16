@@ -13,8 +13,7 @@ class LoginForm(forms.Form):
 
 
 class UserRegistrationForm(UserCreationForm):
-    klass = forms.IntegerField(label='klass')
-
+    klass = forms.IntegerField(min_value=1, max_value=11)
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')

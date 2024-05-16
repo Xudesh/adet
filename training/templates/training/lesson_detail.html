@@ -29,12 +29,19 @@
             {% endif %}
         </div>
 
+
+        <div class="lesson__text">
+            {% if lesson.text %}
+                {{ lesson.text|safe }}
+            {% endif %}
+        </div>
+
         <div class="lesson__date">
             <p>{{ lesson.date| date:'j-F' }}</p>
         </div>
 
         <div class="lesson__test">
-            <a href="{% url 'quizes' %}">Test shigariw</a>
+            <a href="{% url 'pass_test' lesson.pk %}">Test shigariw</a>
         </div>
     </div>
 {% endblock %}

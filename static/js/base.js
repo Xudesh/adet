@@ -9,9 +9,24 @@ let password = document.querySelector('.password');
 let password1 = document.querySelector('.password1');
 let password2 = document.querySelector('.password2');
 
-let eye = document.getElementById('login-eye')
+let eye = document.getElementById('login-eye');
 let eye1 = document.getElementById('eye1');
 let eye2 = document.getElementById('eye2');
+
+
+
+ProfileBtn?.addEventListener('click', () => {
+    ChevronDown.classList.toggle('active');
+
+    DropDownMenu.classList.toggle('active')
+})
+
+
+
+ToggleMenuBtn?.addEventListener('click', ()=> {
+    HeaderMenu.classList.toggle('active')
+})
+
 
 
 eye?.addEventListener('click', () => {
@@ -28,7 +43,6 @@ eye?.addEventListener('click', () => {
     eye.classList.toggle('hide')
 
 })
-
 
 
 eye1?.addEventListener('click', () => {
@@ -62,15 +76,3 @@ eye2?.addEventListener('click', () => {
 })
 
 
-
-ProfileBtn?.addEventListener('click', () => {
-    ChevronDown.classList.toggle('active');
-
-    DropDownMenu.classList.toggle('active')
-})
-
-
-
-ToggleMenuBtn?.addEventListener('click', ()=> {
-    HeaderMenu.classList.toggle('active')
-})

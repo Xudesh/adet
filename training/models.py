@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from django.core.exceptions import ValidationError
-
+from django_ckeditor_5.fields import CKEditor5Field
 
 def image_size(file_obj):
     megabyte_limit = 3
@@ -40,8 +40,9 @@ class Lesson(models.Model):
     slug = models.SlugField('sabaqtin url', max_length=250)
     image = models.ImageField(null=True, blank=True, upload_to='lesson-image/', validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png']), image_size])
     video = models.URLField(max_length=255, null=True, blank=True)
+    text = CKEditor5Field(null=True, blank=True, config_name='extends')
     language = models.ForeignKey(to=Language, on_delete=models.CASCADE, null=True, verbose_name='sabaq')
-    klass = models.IntegerField(null=True, blank=True, choices=[(i, i) for i in range(1, 12)])
+    klass = models.PositiveIntegerField(null=True, blank=True, choices=[(i, i) for i in range(1, 12)])
     date = models.DateField(auto_now=True)
 
     def __str__(self) -> str:

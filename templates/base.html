@@ -114,10 +114,12 @@
 
                             <div class="lesson-info">
                 
-                                <div class="lesson-image">
-                                    <img width="300px" src="{{ lesson.image.url }}" alt="">
-                                </div>
-                
+                                {% if lesson.image %}
+                                    <div class="lesson-image">
+                                        <img width="300px" src="{{ lesson.image.url }}" alt="">
+                                    </div>
+                                {% endif %}
+
                                 <div class="lesson-date">
                                     <p>{{ lesson.date| date:"j-F" }}</p>
                                 </div>

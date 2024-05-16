@@ -181,6 +181,8 @@ body {
 }
 
 
+
+
 .header-right .btn {
   padding: 6.5px 16px;
   border: none;
@@ -590,9 +592,15 @@ body {
     position: absolute;
     top: 70px;
     display: block;
-    left: 220px;
+    left: 270px;
     background-color: dodgerblue;
     padding: 6px 12px;
+  }
+
+  .header .header-right .dropdown-menu{
+    position: absolute;
+    top: 123px;
+    left: 185px;
   }
 
 
@@ -622,12 +630,35 @@ body {
   .footer{
     height: 420px;
   }
+
+  .footer .logo p{
+    font-size: 15px;
+  }
+
+  .header .header-left .header-left-menu.active {
+    position: absolute;
+    top: 70px;
+    display: block;
+    left: 227px;
+    background-color: dodgerblue;
+    padding: 6px 12px;
+  }
+
 }
 
 @media screen and (max-width: 383px) {
   .footer{
     height: 450px;
     justify-content: space-evenly;
+  }
+
+  .header .header-left .header-left-menu.active {
+    position: absolute;
+    top: 70px;
+    display: block;
+    left: 200px;
+    background-color: dodgerblue;
+    padding: 6px 12px;
   }
 
   .header .logo a{
@@ -649,5 +680,22 @@ body {
 
   .sidebar .rating{
     width: 75%;
+  }
+
+  .header .header-right .dropdown-menu{
+    position: absolute;
+    top: 123px;
+    left: 105px;
+  }
+}
+
+
+@media screen and (max-width: 340px){
+  .header .header-right .dropdown-menu{
+    left: 89px;
+  }
+
+  .header .header-left .header-left-menu.active{
+    left: 165px;
   }
 }
