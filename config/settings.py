@@ -7,17 +7,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config("SECRET_KEY")
 
-DEBUG = config("DEBUG")
+DEBUG = True
 
 ALLOWED_HOSTS=['*']
 
 
 LOCAL_APPS = [
+    'utils_app',
     'training',
     'users',
     'quizes',
     'bizler',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
+    'rest_framework'
 
 ]
 
@@ -73,6 +75,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
 }
 
 CKEDITOR_5_FILE_STORAGE = "training.storage.CustomStorage"
@@ -291,6 +299,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ BASE_DIR / 'static/']
+# STATIC_ROOT = BASE_DIR / 'deployment'
 
 
 SESSION_COOKIE_SECURE = True  
