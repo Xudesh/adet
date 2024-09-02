@@ -12,9 +12,18 @@
     align-items: center;
 }
 
-.container_text p{
+.container_text .page_not_found_text{
     font-size: 40px;
     font-weight: 600;
+}
+
+.page_not_found{
+    font-size: 190px;
+    position: fixed;
+    top: 90px;
+    font-weight: 900;
+    filter: opacity(0.4);
+    color: dodgerblue;
 }
 
 .container_text a{
